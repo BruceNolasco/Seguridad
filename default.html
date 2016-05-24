@@ -1,0 +1,101 @@
+<!Doctype html>
+<html>
+<!--Ejercicio para manejar funciones de color-->
+	<head>
+		<meta charset="utf-8">
+		<title>Pepe Blog</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="pepe.less" rel="stylesheet/less"/>
+	</head>
+	<body>
+		<header class="container-fluid">
+			<div class="row jumbotron">
+				<div class="col-xs">
+				<img class="img img-responsive img-rounded center-block well-md" src = "img/header.png"/>
+				</div>
+			</div>
+		</header>
+		<nav class="navbar navbar-default" data-spy="affix" data-offset-top="460">
+			<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#lausnavy">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				 </button>
+				<a class="navbar-brand">The Rarest Pepes</a>
+			</div>
+			<div class="collapse navbar-collapse" id="lausnavy">
+			<ul class="nav navbar-nav" >
+				<li class="active"><a  href="ugly_webpage_main.html">
+					<span class="glyphicon glyphicon-home"></span> Home
+				</a></li>
+				<li><a  href="ugly_webpage_pepe.html">
+					<span class="glyphicon glyphicon-heart"></span> Pepe Meme
+				</a></li>
+				<li><a  href="ugly_webpage_notpepe.html">
+					<span class="glyphicon glyphicon-th"></span> Not Pepe Meme
+				</a></li>
+				<li><a  href="ugly_webpage_text.html">
+					<span class="glyphicon glyphicon-hourglass"></span> Historys	
+				</a></li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<span class="glyphicon glyphicon-tint"></span> Cambiar colores
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a id="p1">Paleta 1</a></li>
+						<li><a id="p2">Paleta 2</a></li>
+						<li><a id="p3">Paleta 3</a></li> 
+					</ul>
+				</li>
+				<li>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-music"></span> Radio PEPE
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a id="a1">R2J2 - Ghostwriter</a></li>
+						<li><a id="a2">Tame Impala - Let It Happen</a></li>
+						<li><a id="a3">Free The Robots - Sci Fidelity</a></li> 
+						<li>
+						<audio controls  id="a1m">
+							<source src="./media/Ghostwriter.mp3" type="audio/mpeg">
+								Metasphere radio es demasiado para tu navegador
+						</audio>
+						<audio controls  id="a2m">
+							<source src="./media/Let It Happen.mp3" type="audio/mpeg">
+								Metasphere radio es demasiado para tu navegador
+						</audio>
+						<audio controls  id="a3m">
+							<source src="./media/Sci-Fidelity.mp3" type="audio/mpeg">
+								Metasphere radio es demasiado para tu navegador
+						</audio>
+					</li>
+					</ul>
+				</li>
+				
+			</ul>
+			</div>
+			</div>
+		</nav>
+		
+		<div class="container-fluid">
+			
+		</div>
+		<footer class="container-fluid">
+			<div class="row">
+				<div class="col-xs-9">
+				
+				</div>
+				<div class="col-xs-3">
+				<p class="lead">Contacto: 666-666-666-666</p>
+				
+				</div>
+			</div>
+		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+		<script src="ccolor.js"></script>
+	</body>
+</html>
