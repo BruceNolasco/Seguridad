@@ -1,4 +1,33 @@
 <?php
+$equivalencias=array(
+	'A'=>10,
+	'B'=>11,
+	'C'=>12,
+	'D'=>13,
+	'E'=>14,
+	'F'=>15,
+	'G'=>16,
+	'H'=>17,
+	'I'=>18,
+	'J'=>19,
+	'K'=>20,
+	'L'=>21,
+	'M'=>22,
+	'Ñ'=>23,
+	'N'=>24,
+	'O'=>25,
+	'P'=>26,
+	'Q'=>27,
+	'R'=>28,
+	'S'=>29,
+	'T'=>30,
+	'U'=>31,
+	'V'=>32,
+	'W'=>33,
+	'X'=>34,
+	'Y'=>35,
+	'Z'=>36,
+);
 echo '
 <html>
 	<head>
@@ -59,11 +88,20 @@ echo '
 		$textado[10]=substr(strtoupper($_POST['sexo']),-1,1);
 		$textado[11]=substr(strtoupper($_POST['ent']),-2,1);
 		$textado[12]=substr(strtoupper($_POST['ent']),-1,1);
-		$pcons=strcspn(strtoupper($_POST['paterno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
-		$textado[13]=substr(strtoupper($_POST['paterno']),$pcons+1,1);
+		$textado[13]=substr(strtoupper($_POST['paterno']),strcspn(strtoupper($_POST['paterno']),"BCDFGHJKLMNPQRSTVWXYZ",1)+1,1);
+		$textado[14]=substr(strtoupper($_POST['materno']),strcspn(strtoupper($_POST['materno']),"BCDFGHJKLMNPQRSTVWXYZ",1)+1,1);
+		$textado[15]=substr(strtoupper($_POST['nombre']),strcspn(strtoupper($_POST['nombre']),"BCDFGHJKLMNPQRSTVWXYZ",1)+1,1);
+		if(intval(strtoupper($_POST['year']))<2000)
+			$textado[16]='0';
+		else
+			$textado[16]='A';
+		
+		
+		//ECHO strcspn(strtoupper($_POST['paterno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
+		/*$textado[13]=substr(strtoupper($_POST['paterno']),$pcons+1,1);
 		var_dump($pcons);
 		$pcons=strcspn(strtoupper($_POST['materno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
-		$textado[14]=substr(strtoupper($_POST['materno']),$pcons+1,1);
+		$textado[14]=substr(strtoupper($_POST['materno']),$pcons+1,1);*/
 		//ECHO $_POST['materno'];
 		
 		$textado=implode($textado);
