@@ -25,7 +25,7 @@ echo '
 			<input  type="text" name="materno" pattern="[A-Z]+" required>
 			<br/>
 			Nombre
-			<input  type="text" name="materno" pattern="[A-Z]+" required>
+			<input  type="text" name="nombre" pattern="[A-Z]+" required>
 			<br/>
 			Año de Nacimiento
 			<input  type="text" name="year" pattern="\d{4}" required>
@@ -40,11 +40,35 @@ echo '
 			<input type="radio" name="sexo" value="H" /> Hombre
 			<input type="radio" name="sexo" value="M" checked /> Mujer<br/>
 			2 Letras correspondientes con la entidad de nacimiento:
-			<input  type="text" name="dia" pattern="[A-Z]{2}" required>
+			<input  type="text" name="ent" pattern="[A-Z]{2}" required>
 			<br/>
 			<input type="submit">
-		</form><pre>'
-		.$textado.'</pre>
+		</form><pre>';
+		
+		$textado[0]=substr(strtoupper($_POST['paterno']),0,1);
+		$pvocal=strcspn(strtoupper($_POST['paterno']), "AEIOU");
+		$textado[1]=substr(strtoupper($_POST['paterno']),$pvocal,1);
+		$textado[2]=substr(strtoupper($_POST['materno']),0,1);
+		$textado[3]=substr(strtoupper($_POST['nombre']),0,1);
+		$textado[4]=substr(strtoupper($_POST['year']),-2,1);
+		$textado[5]=substr(strtoupper($_POST['year']),-1,1);
+		$textado[6]=substr(strtoupper($_POST['mes']),-2,1);
+		$textado[7]=substr(strtoupper($_POST['mes']),-1,1);
+		$textado[8]=substr(strtoupper($_POST['dia']),-2,1);
+		$textado[9]=substr(strtoupper($_POST['dia']),-1,1);
+		$textado[10]=substr(strtoupper($_POST['sexo']),-1,1);
+		$textado[11]=substr(strtoupper($_POST['ent']),-2,1);
+		$textado[12]=substr(strtoupper($_POST['ent']),-1,1);
+		$pcons=strcspn(strtoupper($_POST['paterno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
+		$textado[13]=substr(strtoupper($_POST['paterno']),$pcons+1,1);
+		var_dump($pcons);
+		$pcons=strcspn(strtoupper($_POST['materno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
+		$textado[14]=substr(strtoupper($_POST['materno']),$pcons+1,1);
+		//ECHO $_POST['materno'];
+		
+		$textado=implode($textado);
+		echo 'CURP:<br/>'.$textado;
+		echo '</pre>
 		</body>
 </html>';
 ?>
