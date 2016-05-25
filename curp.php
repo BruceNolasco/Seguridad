@@ -92,7 +92,7 @@ echo '
 		<p>Mayúsculas por favor...</p>
 		<form action="curp.php" method="POST">
 			CURP a verificar:
-			<input  type="text" name="curp" pattern="\W{18}" autofocus required>
+			<input  type="text" name="curp" pattern="\w{18}" autofocus required>
 			<br/>
 			<input type="submit">
 		</form><pre>';
@@ -136,6 +136,30 @@ echo '
 		
 		$textado=implode($textado);
 		echo 'CURP:<br/>'.$textado;
+		}
+		else
+		{
+				if(isset($_POST['curp'])&&strlen(($_POST['curp'])))
+				{
+					$curp=str_split(strtoupper($_POST['curp']));
+					$verify=0;
+					for($i=0;$i<=15;$i++)
+					{
+						$verify+=($equivalencias[(strtoupper($curp[$i]))]*(18-$i));
+						echo ($equivalencias[(strtoupper($curp[$i]))]*(18-$i)).'<br/>';
+					}
+					echo $verify.'<br/>';
+					if($verify%10==intval($curp[17])%10)
+					{
+						echo 'La CURP: '.implode($curp).' es válida';
+					}
+					else{
+						echo 'La CURP: '.implode($curp).' es inválida';
+					}
+				}
+				else {
+					echo 'Petición inválida';
+				}
 		}
 		echo '</pre>
 		</body>
