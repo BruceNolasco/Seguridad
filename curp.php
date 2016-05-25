@@ -67,7 +67,7 @@ echo '
 			<input  type="text" name="materno" pattern="[A-Z]+" required>
 			<br/>
 			Nombre
-			<input  type="text" name="nombre" pattern="[A-Z]+" required>
+			<input  type="text" name="nombre" pattern="([A-Z]+\s*)+" required>
 			<br/>
 			Año de Nacimiento
 			<input  type="text" name="year" pattern="\d{4}" required>
@@ -96,7 +96,7 @@ echo '
 			<br/>
 			<input type="submit">
 		</form><pre>';
-		if(isset($_POST['paterno'])&&isset($_POST['materno'])&&isset($_POST['nombre'])&&isset($_POST['year'])&&isset($_POST['mes'])&&isset($_POST['dia'])&&isset($_POST['sexo'])&&isset($_POST['ent']))
+		if(isset($_POST['paterno'])&&isset($_POST['materno'])&&isset($_POST['nombre'])&&isset($_POST['year'])&&isset($_POST['mes'])&&isset($_POST['dia'])&&isset($_POST['sexo'])&&isset($_POST['ent'])&&INTVAL($_POST['year'])<=2016&&INTVAL($_POST['year'])>1876&&INTVAL($_POST['mes'])<=12&&INTVAL($_POST['mes'])>0&&INTVAL($_POST['dia'])<=31&&INTVAL($_POST['dia'])<=2016)
 		{
 		
 		$textado[0]=substr(strtoupper($_POST['paterno']),0,1);
@@ -139,14 +139,13 @@ echo '
 		}
 		else
 		{
-				if(isset($_POST['curp'])&&strlen(($_POST['curp'])))
+				if(isset($_POST['curp'])&&strlen(($_POST['curp']))==18)
 				{
 					$curp=str_split(strtoupper($_POST['curp']));
 					$verify=0;
 					for($i=0;$i<=15;$i++)
 					{
 						$verify+=($equivalencias[(strtoupper($curp[$i]))]*(18-$i));
-						echo ($equivalencias[(strtoupper($curp[$i]))]*(18-$i)).'<br/>';
 					}
 					echo $verify.'<br/>';
 					if($verify%10==intval($curp[17])%10)
