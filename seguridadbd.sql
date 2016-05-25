@@ -1,8 +1,8 @@
-CREATE DATABASE seguridad;
-USE DATABASE seguridad;
+CREATE DATABASE seguridadBN;
+USE seguridadBN;
 CREATE TABLE unau
 (
-s tinyint,
-usuario varchar(30),
-hs varchar(120) 
+s tinyint NOT NULL,
+usuario varchar(30) NOT NULL,
+hs varchar(41) NOT NULL
 );

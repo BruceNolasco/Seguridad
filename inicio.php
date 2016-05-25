@@ -1,6 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['user'])&&isset($_SESSION['pass']))
+{
+	$cc=mysqli_connect("localhost", "root", "", "seguridadBN");
 
+}
 
 ECHO '
 <!DOCTYPE html>
@@ -51,9 +55,19 @@ else
 		<form action="inicio.php" method="POST">
 			<input  type="hidden" name="gg" value"'.$_SESSION['sh'].'"/>
 			<input type="submit">
-		</form>';
+		</form>
 		
-echo'	</body>
+		';
+		
+echo'	<a href="asimetrico.php">Cifrado Asimetrico</a><br/>
+		<a href="curp.php">CURP</a><br/>
+		<a href="p8.html">Hash</a><br/>
+		<a href="p8p2.html">Loose loose</a><br/>
+		<a href="p9.html">ISBN</a><br/>
+		<a href="playfair.html">Playfair</a><br/>
+		<a href="simetrico.html">Cifrado Simetrico</a><br/>
+		<a href="simple.html">Cifrado Simple</a><br/>
+		<a href="visa.php">VISA</a><br/></body>
 </html>';
 
 ?>
