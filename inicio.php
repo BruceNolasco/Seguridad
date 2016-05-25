@@ -1,10 +1,12 @@
 <?php
 session_start();
-if(isset($_SESSION['user'])&&isset($_SESSION['pass']))
+if(isset($_POST['user'])&&isset($_POST['pass']))
 {
 	$cc=mysqli_connect("localhost", "root", "", "seguridadBN");
-
-}
+	$qq=mysqli_query($cc,mysqli_real_escape_string($cc,'INSERT INTO unau VALUES (2,"'.$_POST['user'].'","'.'B'.sha1($_POST['pass']).'");'));
+	echo 'INSERT INTO unau VALUES (2,"'.$_POST['user'].'","'.'B'.sha1($_POST['pass']).'");';
+	var_dump($qq);
+	}
 
 ECHO '
 <!DOCTYPE html>
