@@ -1,5 +1,15 @@
 <?php
 $equivalencias=array(
+	'0'=>0,
+	'1'=>1,
+	'2'=>2,
+	'3'=>3,
+	'4'=>4,
+	'5'=>5,
+	'6'=>6,
+	'7'=>7,
+	'8'=>8,
+	'9'=>9,
 	'A'=>10,
 	'B'=>11,
 	'C'=>12,
@@ -45,6 +55,9 @@ echo '
 		<h1>
 			Seguridad-Validación de CURP
 		</h1>
+		<h2>
+			Crear CURP
+		</h2>
 		<p>Mayúsculas por favor...</p>
 		<form action="curp.php" method="POST">
 			Apellido Paterno:
@@ -72,7 +85,19 @@ echo '
 			<input  type="text" name="ent" pattern="[A-Z]{2}" required>
 			<br/>
 			<input type="submit">
+		</form>
+		<h2>
+			Verificar CURP
+		</h2>
+		<p>Mayúsculas por favor...</p>
+		<form action="curp.php" method="POST">
+			CURP a verificar:
+			<input  type="text" name="curp" pattern="\W{18}" autofocus required>
+			<br/>
+			<input type="submit">
 		</form><pre>';
+		if(isset($_POST['paterno'])&&isset($_POST['materno'])&&isset($_POST['nombre'])&&isset($_POST['year'])&&isset($_POST['mes'])&&isset($_POST['dia'])&&isset($_POST['sexo'])&&isset($_POST['ent']))
+		{
 		
 		$textado[0]=substr(strtoupper($_POST['paterno']),0,1);
 		$pvocal=strcspn(strtoupper($_POST['paterno']), "AEIOU");
@@ -95,6 +120,11 @@ echo '
 			$textado[16]='0';
 		else
 			$textado[16]='A';
+		$verify=0;
+		for($i=0;$i<=15;$i++)
+			$verify+=($equivalencias[substr(strtoupper($textado[$i]),$i,1)]*(18-$i));
+		$verify%=10;
+		$textado[17]=$verify;
 		
 		
 		//ECHO strcspn(strtoupper($_POST['paterno']),"BCDFGHJKLMNPQRSTVWXYZ",1);
@@ -106,6 +136,7 @@ echo '
 		
 		$textado=implode($textado);
 		echo 'CURP:<br/>'.$textado;
+		}
 		echo '</pre>
 		</body>
 </html>';
